@@ -17,13 +17,9 @@ class DeliveryController {
     // Recebendo os Query Parameters
     const { page = 1, product } = req.query;
 
-    // Filtra as Encomendas que:
-    // - Não foram canceladas (canceled_at = null)
-    // - Não estão Entregues (end_data = null)
+    // Traz todas as encomendas
     const deliveries = await Delivery.findAll({
       where: {
-        canceled_at: null,
-        end_date: null,
         product: {
           [Op.iLike]: product ? `%${product}%` : '%%',
         },
@@ -31,7 +27,7 @@ class DeliveryController {
       order: ['id'],
       limit: 20,
       offset: (page - 1) * 20,
-      attributes: ['id', 'product'],
+      attributes: ['id', 'product', 'canceled_at', 'start_date', 'end_date'],
       include: [
         {
           model: Recipient,
