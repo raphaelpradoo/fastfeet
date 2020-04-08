@@ -1,24 +1,24 @@
 export const colors = {
-  primary: '#7D40E7',
-  danger: '#DE3B3B',
-  info: '#4D85EE',
+  primary: '#7d40e7',
+  danger: '#ff0000',
+  info: '#4d85ee',
 };
 
 export const statusColors = {
   PENDENTE: {
-    color: '#C1BC35',
-    background: '#F0F0DF',
+    color: '#ffd700',
+    background: '#fff8dc',
   },
   RETIRADA: {
-    color: '#4D85EE',
-    background: '#BAD2FF',
+    color: '#000080',
+    background: '#6495ed',
   },
   ENTREGUE: {
-    color: '#2CA42B',
-    background: '#DFF0DF',
+    color: '#008000',
+    background: '#90ee90',
   },
   CANCELADA: {
-    color: '#DE3B3B',
-    background: '#FAB0B0',
+    color: '#ff0000',
+    background: '#fa8072',
   },
 };
