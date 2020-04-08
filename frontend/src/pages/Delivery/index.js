@@ -16,8 +16,6 @@ export default function Delivery() {
   const [deliveries, setDeliveries] = useState([]);
   const [page, setPage] = useState(1);
 
-  // console.log(deliveries);
-
   function formatDates(data) {
     return data.map((delivery) => ({
       ...delivery,
@@ -34,7 +32,7 @@ export default function Delivery() {
     setPage(1);
     const response = await api.get('/deliveries', {
       params: {
-        q: e.target.value,
+        product: e.target.value,
         page,
       },
     });
