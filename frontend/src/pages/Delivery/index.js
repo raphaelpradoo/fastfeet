@@ -28,6 +28,7 @@ export default function Delivery() {
     }));
   }
 
+  // Busca todas as Encomendas do Backend pelo campo de Pesquisa
   async function handleSearchDelivery(e) {
     setPage(1);
     const response = await api.get('/deliveries', {
@@ -42,7 +43,7 @@ export default function Delivery() {
     setDeliveries(data);
   }
 
-  // Buscando as Encomendas do Backend
+  // Busca todas Encomendas do Backend
   async function loadDeliveries() {
     const response = await api.get('/deliveries', {
       params: {

@@ -1,7 +1,6 @@
 import React from 'react';
 // import { MdEdit, MdDeleteForever } from 'react-icons/md';
 // import { toast } from 'react-toastify';
-
 import PropTypes from 'prop-types';
 
 // import More from '~/components/MorePopUp';
