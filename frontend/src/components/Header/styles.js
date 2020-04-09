@@ -45,14 +45,14 @@ export const Navigation = styled.div`
     font-size: 15px;
     font-weight: bold;
     color: #999;
-    transition: color 0.2s;
+    transition: color 0.5s;
 
     &:hover {
-      color: #834323;
+      color: #7159c1;
     }
 
-    &.active {
-      color: #444;
+    &:active {
+      color: #7159c1;
     }
   }
 `;
