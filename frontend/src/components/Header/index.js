@@ -21,7 +21,7 @@ export default function Header() {
         <Navigation>
           <NavLink to="/delivery">ENCOMENDAS</NavLink>
           <NavLink to="/deliveryman">ENTREGADORES</NavLink>
-          <NavLink to="/">DESTINATÁRIOS</NavLink>
+          <NavLink to="/recipient">DESTINATÁRIOS</NavLink>
           <NavLink to="/">PROBLEMAS</NavLink>
         </Navigation>
 
