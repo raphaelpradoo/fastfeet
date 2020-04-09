@@ -5,7 +5,7 @@ export const Container = styled.div`
     font-size: 24px;
     font-weight: bold;
     color: #444;
-
+    margin-top: 35px;
     margin-bottom: 35px;
   }
 `;
