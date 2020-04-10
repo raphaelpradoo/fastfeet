@@ -34,6 +34,12 @@ class RecipientController {
     return res.json(recipients);
   }
 
+  // GetById - Método para trazer um Destinatario por ID
+  async getById(req, res) {
+    const recipient = await Recipient.findByPk(req.params.id);
+    return res.json(recipient);
+  }
+
   // Store - Método para SALVAR
   async store(req, res) {
     const schema = Yup.object().shape({
