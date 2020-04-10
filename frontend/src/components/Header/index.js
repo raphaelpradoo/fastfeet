@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import logo from '~/assets/fastfeet-logo.png';
 import { Container, Content, Navigation, Profile } from './styles';
 import { signOut } from '~/store/modules/auth/actions';
+import logo from '~/assets/fastfeet-logo.png';
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function Header() {
           <NavLink to="/delivery">ENCOMENDAS</NavLink>
           <NavLink to="/deliveryman">ENTREGADORES</NavLink>
           <NavLink to="/recipient">DESTINATÁRIOS</NavLink>
-          <NavLink to="/">PROBLEMAS</NavLink>
+          <NavLink to="/deliveryProblem">PROBLEMAS</NavLink>
         </Navigation>
 
         <aside>
