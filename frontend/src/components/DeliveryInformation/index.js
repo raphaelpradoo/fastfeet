@@ -1,13 +1,10 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import Modal from '~/components/Modal';
-
-import { Container } from './styles';
+import { Container } from '~/styles/information';
 
 export default function DeliveryInformation({ data }) {
-  console.tron.log(data);
   return (
     <Modal>
       <Container>

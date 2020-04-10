@@ -1,11 +1,11 @@
 import React from 'react';
-import { MdEdit, MdDeleteForever } from 'react-icons/md';
+import { MdDeleteForever } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
+import DeliveryProblemInformation from '~/components/DeliveryProblemInformation';
 import Actions from '~/components/Actions';
 import api from '~/services/api';
-import history from '~/services/history';
 import { colors } from '~/styles/colors';
 
 import { Container, ActionsContainer } from './styles';
@@ -36,13 +36,7 @@ export default function DeliveryProblemItem({ data, updateDeliveryProblem }) {
       <Actions>
         <ActionsContainer>
           <div>
-            <button
-              onClick={() => history.push(`/deliveries/form/${data.id}`)}
-              type="button"
-            >
-              <MdEdit color={colors.info} size={15} />
-              <span>Editar</span>
-            </button>
+            <DeliveryProblemInformation data={data} />
           </div>
           <div>
             <button onClick={handleDelete} type="button">
