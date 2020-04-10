@@ -30,7 +30,7 @@ export const Container = styled.div`
   }
 `;
 
-export const MoreContainer = styled.div`
+export const ActionsContainer = styled.div`
   padding: 10px;
 
   > div {

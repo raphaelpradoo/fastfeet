@@ -29,3 +29,38 @@ export const Container = styled.div`
     align-items: center;
   }
 `;
+
+export const ActionsContainer = styled.div`
+  padding: 10px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    padding-bottom: 6px;
+
+    button {
+      background: none;
+      border: none;
+
+      display: flex;
+    }
+
+    svg {
+      margin-right: 8px;
+    }
+
+    span {
+      font-size: 16px;
+      color: #999;
+    }
+
+    :nth-last-child(-n + 2) {
+      padding-top: 6px;
+      border-top: 1px solid #eee;
+    }
+
+    :nth-last-child(1) {
+      padding-bottom: 0;
+    }
+  }
+`;
