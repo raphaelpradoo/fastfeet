@@ -44,6 +44,7 @@ export default function DeliveryItem({ data }) {
         color={statusColors[status].color}
         background={statusColors[status].background}
       />
+      <small>...</small>
     </Container>
   );
 }

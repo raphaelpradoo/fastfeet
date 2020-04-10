@@ -21,6 +21,7 @@ export default function DeliverymanItem({ data }) {
       )}
       <small>{data.name}</small>
       <small>{data.email}</small>
+      <small>...</small>
     </Container>
   );
 }

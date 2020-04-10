@@ -24,6 +24,7 @@ export default function RecipientItem({ data }) {
       <small>#{data.id}</small>
       <small>{data.name}</small>
       <small>{concatenatedAddress}</small>
+      <small>...</small>
     </Container>
   );
 }
