@@ -1,19 +1,19 @@
 import React from 'react';
-// import { MdEdit, MdDeleteForever } from 'react-icons/md';
-// import { toast } from 'react-toastify';
+import { MdEdit, MdDeleteForever } from 'react-icons/md';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
-// import More from '~/components/MorePopUp';
-// import api from '~/services/api';
-// import history from '~/services/history';
-import { statusColors } from '~/styles/colors';
+import Actions from '~/components/Actions';
+import api from '~/services/api';
+import history from '~/services/history';
+import { statusColors, colors } from '~/styles/colors';
 import { stateName } from '~/utils/states';
 
-// import DeliveryModal from '../Modal';
+import DeliveryInformation from '~/components/DeliveryInformation';
 import Status from '~/components/DeliveryStatus';
-import { Container } from './styles';
+import { Container, ActionsContainer } from './styles';
 
-export default function DeliveryItem({ data }) {
+export default function DeliveryItem({ data, updateDeliveries }) {
   function checkStatus(deliveryItem) {
     if (deliveryItem.canceled_at !== null) {
       return 'CANCELADA';
@@ -30,6 +30,23 @@ export default function DeliveryItem({ data }) {
     return '';
   }
 
+  async function handleDelete() {
+    const confirm = window.confirm('Você tem certeza que deseja deletar isso?');
+
+    if (!confirm) {
+      toast.error('Encomenda não apagada!');
+      return;
+    }
+
+    try {
+      await api.delete(`/deliveries/${data.id}`);
+      updateDeliveries();
+      toast.success('Encomenda apagada com sucesso!');
+    } catch (err) {
+      toast.error('Essa encomenda não pode ser deletada!');
+    }
+  }
+
   const status = checkStatus(data);
 
   return (
@@ -44,7 +61,29 @@ export default function DeliveryItem({ data }) {
         color={statusColors[status].color}
         background={statusColors[status].background}
       />
-      <small>...</small>
+
+      <Actions>
+        <ActionsContainer>
+          <div>
+            <DeliveryInformation data={data} />
+          </div>
+          <div>
+            <button
+              onClick={() => history.push(`/deliveries/form/${data.id}`)}
+              type="button"
+            >
+              <MdEdit color={colors.info} size={15} />
+              <span>Editar</span>
+            </button>
+          </div>
+          <div>
+            <button onClick={handleDelete} type="button">
+              <MdDeleteForever color={colors.danger} size={15} />
+              <span>Excluir</span>
+            </button>
+          </div>
+        </ActionsContainer>
+      </Actions>
     </Container>
   );
 }
