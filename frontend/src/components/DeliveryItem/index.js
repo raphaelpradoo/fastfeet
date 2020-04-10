@@ -13,7 +13,7 @@ import DeliveryInformation from '~/components/DeliveryInformation';
 import Status from '~/components/DeliveryStatus';
 import { Container, ActionsContainer } from './styles';
 
-export default function DeliveryItem({ data, updateDelivery }) {
+export default function DeliveryItem({ data }) {
   function checkStatus(deliveryItem) {
     if (deliveryItem.canceled_at !== null) {
       return 'CANCELADA';
@@ -40,7 +40,7 @@ export default function DeliveryItem({ data, updateDelivery }) {
 
     try {
       await api.delete(`/deliveries/${data.id}`);
-      updateDelivery();
+      // updateDelivery();
       toast.success('Encomenda apagada com sucesso!');
     } catch (err) {
       toast.error('Essa encomenda não pode ser deletada!');
@@ -89,7 +89,7 @@ export default function DeliveryItem({ data, updateDelivery }) {
 }
 
 DeliveryItem.propTypes = {
-  updateDelivery: PropTypes.func.isRequired,
+  // updateDelivery: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     product: PropTypes.string,

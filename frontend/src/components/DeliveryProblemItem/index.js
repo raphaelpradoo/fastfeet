@@ -10,7 +10,7 @@ import { colors } from '~/styles/colors';
 
 import { Container, ActionsContainer } from './styles';
 
-export default function DeliveryProblemItem({ data, updateDeliveryProblem }) {
+export default function DeliveryProblemItem({ data }) {
   async function handleDelete() {
     const confirm = window.confirm('Você tem certeza ... ?');
 
@@ -21,7 +21,7 @@ export default function DeliveryProblemItem({ data, updateDeliveryProblem }) {
 
     try {
       await api.delete(`/deliveries/${data.id}`);
-      updateDeliveryProblem();
+      // updateDeliveryProblem();
       toast.success('... apagada com sucesso!');
     } catch (err) {
       toast.error('... não pode ser deletada!');
@@ -51,7 +51,7 @@ export default function DeliveryProblemItem({ data, updateDeliveryProblem }) {
 }
 
 DeliveryProblemItem.propTypes = {
-  updateDeliveryProblem: PropTypes.func.isRequired,
+  // updateDeliveryProblem: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     description: PropTypes.string,

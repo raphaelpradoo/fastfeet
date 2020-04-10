@@ -11,7 +11,7 @@ import { colors } from '~/styles/colors';
 
 import { Container, ActionsContainer } from './styles';
 
-export default function DeliverymanItem({ data, updateDeliveryman }) {
+export default function DeliverymanItem({ data }) {
   async function handleDelete() {
     const confirm = window.confirm('Você tem certeza ... ?');
 
@@ -22,7 +22,7 @@ export default function DeliverymanItem({ data, updateDeliveryman }) {
 
     try {
       await api.delete(`/deliveries/${data.id}`);
-      updateDeliveryman();
+      // updateDeliveryman();
       toast.success('... apagada com sucesso!');
     } catch (err) {
       toast.error('... não pode ser deletada!');
@@ -64,7 +64,7 @@ export default function DeliverymanItem({ data, updateDeliveryman }) {
 }
 
 DeliverymanItem.propTypes = {
-  updateDeliveryman: PropTypes.func.isRequired,
+  // updateDeliveryman: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,

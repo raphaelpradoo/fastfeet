@@ -11,18 +11,18 @@ import { colors } from '~/styles/colors';
 
 import { Container, ActionsContainer } from './styles';
 
-export default function RecipientItem({ data, updateRecipient }) {
+export default function RecipientItem({ data }) {
   async function handleDelete() {
-    const confirm = window.confirm('Você tem certeza ... ?');
+    const confirm = window.confirm('Deseja realmente excluir o Destinatário ?');
 
     if (!confirm) {
-      toast.error('... não apagada!');
+      toast.error('Destinatário não apagado !');
       return;
     }
 
     try {
       await api.delete(`/deliveries/${data.id}`);
-      updateRecipient();
+      // updateRecipient();
       toast.success('... apagada com sucesso!');
     } catch (err) {
       toast.error('... não pode ser deletada!');
@@ -52,7 +52,7 @@ export default function RecipientItem({ data, updateRecipient }) {
         <ActionsContainer>
           <div>
             <button
-              onClick={() => history.push(`/deliveries/form/${data.id}`)}
+              onClick={() => history.push(`/recipient/form/${data.id}`)}
               type="button"
             >
               <MdEdit color={colors.info} size={15} />
@@ -72,7 +72,7 @@ export default function RecipientItem({ data, updateRecipient }) {
 }
 
 RecipientItem.propTypes = {
-  updateRecipient: PropTypes.func.isRequired,
+  // updateRecipient: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,

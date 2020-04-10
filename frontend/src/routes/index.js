@@ -20,6 +20,12 @@ export default function Routes() {
 
       <Route path="/recipient" exact component={Recipient} isPrivate />
       <Route path="/recipient/form" exact component={RecipientForm} isPrivate />
+      <Route
+        path="/recipient/form/:id"
+        exact
+        component={RecipientForm}
+        isPrivate
+      />
 
       <Route path="/deliveryProblem" component={DeliveryProblem} isPrivate />
     </Switch>

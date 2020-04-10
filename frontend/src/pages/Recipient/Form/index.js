@@ -22,7 +22,6 @@ export default function RecipientForm({ match }) {
     async function loadInitialData() {
       if (id) {
         const response = await api.get(`/recipients/${id}`);
-
         formRef.current.setData(response.data);
       }
     }
@@ -54,11 +53,12 @@ export default function RecipientForm({ match }) {
           name: data.name,
           address: data.address,
           number: data.number,
-          complement: data.complement ? data.complement : null,
+          complement: data.complement !== null ? data.complement : null,
           city: data.city,
           state: data.state,
           cep: data.cep,
         });
+
         toast.success('Destinatário editado com sucesso!');
         history.push('/recipient');
       } else {
@@ -71,21 +71,14 @@ export default function RecipientForm({ match }) {
           state: data.state,
           cep: data.cep,
         });
+
         toast.success('Destinatário criado com sucesso!');
         history.push('/recipient');
       }
 
       reset();
     } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errorMessages = {};
-
-        err.inner.forEach((error) => {
-          errorMessages[error.path] = error.message;
-        });
-
-        formRef.current.setErrors(errorMessages);
-      }
+      toast.error('Erro na execução !');
     }
   }
 
