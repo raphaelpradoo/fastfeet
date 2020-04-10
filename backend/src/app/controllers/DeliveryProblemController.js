@@ -1,28 +1,42 @@
 import * as Yup from 'yup';
+import { Op } from 'sequelize';
 
 import Delivery from '../models/Delivery';
+import Deliveryman from '../models/Deliveryman';
 import DeliveryProblem from '../models/DeliveryProblem';
+import Recipient from '../models/Recipient';
 
 class DeliveryProblemController {
-  // Index - Método para Listar todos os Problemas de uma Encomenda
+  // Index - Método para Listar todos os Problemas das Entregas
   async index(req, res) {
-    // Erro. Entrega não encontrada.
-    const delivery = await Delivery.findByPk(req.params.id);
-
-    if (!delivery) {
-      return res.status(404).json({ error: 'Delivery not found.' });
-    }
-
-    // Verifica se a Entrega tem algum Problema
     const problems = await DeliveryProblem.findAll({
-      where: { delivery_id: req.params.id },
       order: ['id'],
       attributes: ['id', 'description'],
+      include: [
+        {
+          model: Delivery,
+          as: 'delivery',
+          attributes: ['id', 'product'],
+          where: {
+            canceled_at: {
+              [Op.eq]: null,
+            },
+          },
+          include: [
+            {
+              model: Recipient,
+              as: 'recipient',
+              attributes: ['id', 'name', 'address'],
+            },
+            {
+              model: Deliveryman,
+              as: 'deliveryman',
+              attributes: ['id', 'name', 'email'],
+            },
+          ],
+        },
+      ],
     });
-
-    if (!problems) {
-      return res.status(404).json({ error: 'Delivery no problem.' });
-    }
 
     return res.json(problems);
   }

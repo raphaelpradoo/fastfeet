@@ -40,8 +40,8 @@ routes.put(
 );
 
 // Problemas na Entrega
-routes.get('/delivery/:id/problems', DeliveryProblemController.index);
-routes.post('/delivery/:id/problems', DeliveryProblemController.store);
+routes.get('/deliveries/problems', DeliveryProblemController.index);
+routes.post('/delivery/:id/problem', DeliveryProblemController.store);
 
 // Middleware de Autenticação via Token JWT
 // para todas as rotas abaixo desta linha
