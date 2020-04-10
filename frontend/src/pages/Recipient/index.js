@@ -56,7 +56,7 @@ export default function Recipient() {
           <AddButton
             Icon={MdAdd}
             title="CADASTRAR"
-            action={() => history.push('')}
+            action={() => history.push('/recipient/form')}
             type="button"
           />
         </PageTitle>
