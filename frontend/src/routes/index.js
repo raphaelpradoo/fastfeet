@@ -24,6 +24,12 @@ export default function Routes() {
         component={DeliverymanForm}
         isPrivate
       />
+      <Route
+        path="/deliveryman/form/:id"
+        exact
+        component={DeliverymanForm}
+        isPrivate
+      />
 
       <Route path="/recipient" exact component={Recipient} isPrivate />
       <Route path="/recipient/form" exact component={RecipientForm} isPrivate />

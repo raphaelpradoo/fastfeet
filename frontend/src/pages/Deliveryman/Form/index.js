@@ -23,12 +23,10 @@ export default function DeliverymanForm({ match }) {
     async function loadInitialData(deliverymanId) {
       if (id) {
         const response = await api.get(`/deliverymen/${deliverymanId}`);
-
-        formRef.current.setData(response.data);
-        // formRef.current.setFieldValue('avatar', response?.data?.avatar?.url);
+        formRef.current.setData(response.data[0]);
         formRef.current.setFieldValue(
           'avatar',
-          response.data.avatar !== null ? response.data.avatar.url : null
+          response.data[0].avatar !== null ? response.data[0].avatar.url : null
         );
       }
     }

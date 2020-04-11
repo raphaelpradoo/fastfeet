@@ -44,7 +44,7 @@ export default function DeliverymanItem({ data }) {
         <ActionsContainer>
           <div>
             <button
-              onClick={() => history.push(`/deliveries/form/${data.id}`)}
+              onClick={() => history.push(`/deliveryman/form/${data.id}`)}
               type="button"
             >
               <MdEdit color={colors.info} size={15} />
