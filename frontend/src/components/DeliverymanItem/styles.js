@@ -8,6 +8,12 @@ export const Container = styled.div`
   padding-left: 25px;
   padding-right: 13px;
 
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
   display: grid;
   grid-template-columns: 0.5fr 1fr 1.5fr 1.5fr 1fr;
 

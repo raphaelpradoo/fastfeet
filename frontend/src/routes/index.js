@@ -9,6 +9,7 @@ import Recipient from '~/pages/Recipient';
 import DeliveryProblem from '~/pages/DeliveryProblem';
 
 import RecipientForm from '~/pages/Recipient/Form';
+import DeliverymanForm from '~/pages/Deliveryman/Form';
 
 export default function Routes() {
   return (
@@ -16,7 +17,13 @@ export default function Routes() {
       <Route path="/" exact component={SignIn} />
       <Route path="/delivery" component={Delivery} isPrivate />
 
-      <Route path="/deliveryman" component={Deliveryman} isPrivate />
+      <Route path="/deliveryman" exact component={Deliveryman} isPrivate />
+      <Route
+        path="/deliveryman/form"
+        exact
+        component={DeliverymanForm}
+        isPrivate
+      />
 
       <Route path="/recipient" exact component={Recipient} isPrivate />
       <Route path="/recipient/form" exact component={RecipientForm} isPrivate />

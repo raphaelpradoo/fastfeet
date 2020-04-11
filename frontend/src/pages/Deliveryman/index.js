@@ -55,7 +55,7 @@ export default function Deliveryman() {
           <AddButton
             Icon={MdAdd}
             title="CADASTRAR"
-            action={() => history.push('')}
+            action={() => history.push('/deliveryman/form')}
             type="button"
           />
         </PageTitle>
