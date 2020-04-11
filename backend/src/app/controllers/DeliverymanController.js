@@ -37,7 +37,20 @@ class DeliverymanController {
 
   // GetById - Método para trazer um Entregador por ID
   async getById(req, res) {
-    const deliveryman = await Deliveryman.findByPk(req.params.id);
+    const deliveryman = await Deliveryman.findAll({
+      where: {
+        id: req.params.id,
+      },
+      attributes: ['id', 'name', 'email'],
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+
     return res.json(deliveryman);
   }
 
