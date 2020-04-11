@@ -35,6 +35,12 @@ class DeliverymanController {
     return res.json(deliverymen);
   }
 
+  // GetById - Método para trazer um Entregador por ID
+  async getById(req, res) {
+    const deliveryman = await Deliveryman.findByPk(req.params.id);
+    return res.json(deliveryman);
+  }
+
   // Store - Método para CRIAR
   async store(req, res) {
     const schema = Yup.object().shape({

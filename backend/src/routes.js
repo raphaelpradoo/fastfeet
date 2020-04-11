@@ -25,7 +25,7 @@ routes.post('/users', UserController.store);
 routes.put('/users', UserController.update);
 
 // Tarefa dos Entregadores
-routes.get('/deliverymen/:id', DeliverymanFeaturesController.index);
+// routes.get('/deliverymen/:id', DeliverymanFeaturesController.index);
 routes.get(
   '/deliverymen/:id/deliveries',
   DeliverymanFeaturesController.deliveries
@@ -58,6 +58,7 @@ routes.post('/files', upload.single('file'), FileController.store);
 
 // Entregadores
 routes.get('/deliverymen', DeliverymanController.index);
+routes.get('/deliverymen/:id', DeliverymanController.getById);
 routes.post('/deliverymen', DeliverymanController.store);
 routes.put('/deliverymen/:id', DeliverymanController.update);
 routes.delete('/deliverymen/:id', DeliverymanController.delete);
