@@ -85,7 +85,9 @@ export default function RecipientForm({ match }) {
   return (
     <Container>
       <Content>
-        <HeaderForm title="Cadastro de destinatário">
+        <HeaderForm
+          title={id ? 'Edição de destinatário' : 'Cadastro de destinatário'}
+        >
           <BackButton />
           <SaveButton action={() => formRef.current.submitForm()} />
         </HeaderForm>

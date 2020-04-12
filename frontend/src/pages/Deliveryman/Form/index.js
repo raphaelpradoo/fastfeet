@@ -82,7 +82,9 @@ export default function DeliverymanForm({ match }) {
   return (
     <Container>
       <Content>
-        <HeaderForm title="Cadastro de entregadores">
+        <HeaderForm
+          title={id ? 'Edição de entregador' : 'Cadastro de entregador'}
+        >
           <BackButton />
           <SaveButton action={() => formRef.current.submitForm()} />
         </HeaderForm>
