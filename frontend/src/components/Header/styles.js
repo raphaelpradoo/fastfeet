@@ -1,29 +1,30 @@
 import styled from 'styled-components';
-// import { colors } from '~/styles/colors';
 
 export const Container = styled.div`
   background: #fff;
   padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const Content = styled.div`
   height: 64px;
-  max-width: 900px;
+  max-width: auto;
   margin: 0 auto;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   align-items: center;
+
+  img {
+    padding-right: 20px;
+    max-width: 20%;
+    height: auto;
+  }
 
   nav {
     display: flex;
     align-items: center;
-
-    img {
-      margin-top: 20px;
-      margin-right: 20px;
-      padding-right: 20px;
-      border-right: 1px solid #333;
-    }
 
     aside {
       display: flex;
@@ -36,7 +37,6 @@ export const Navigation = styled.div`
   padding-left: 30px;
   height: 32px;
   border-left: 1px solid #ddd;
-
   display: flex;
   align-items: center;
 
@@ -50,7 +50,6 @@ export const Navigation = styled.div`
     &:hover {
       color: #7159c1;
     }
-
     &:active {
       color: #7159c1;
     }
@@ -60,15 +59,17 @@ export const Navigation = styled.div`
 export const Profile = styled.div`
   display: flex;
   margin-left: 20px;
+  margin-top: 20px;
   padding-left: 20px;
-  border-left: 1px solid #eee;
 
   div {
     text-align: right;
     margin-right: 10px;
+    align-items: center;
 
     strong {
-      display: block;
+      display: inline;
+      align-items: flex-end;
       color: #333;
     }
 
@@ -80,11 +81,5 @@ export const Profile = styled.div`
       background: transparent;
       border: 0;
     }
-  }
-
-  img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
   }
 `;

@@ -24,18 +24,18 @@ export default function Header() {
           <NavLink to="/recipient">DESTINATÁRIOS</NavLink>
           <NavLink to="/deliveryProblem">PROBLEMAS</NavLink>
         </Navigation>
-
-        <aside>
-          <Profile>
-            <div>
-              <strong>{profile.name}</strong>
-              <button type="button" onClick={handleSignOut}>
-                Sair do sistema
-              </button>
-            </div>
-          </Profile>
-        </aside>
       </Content>
+
+      <aside>
+        <Profile>
+          <div>
+            <strong>{profile.name}</strong>
+            <button type="button" onClick={handleSignOut}>
+              Sair do sistema
+            </button>
+          </div>
+        </Profile>
+      </aside>
     </Container>
   );
 }
