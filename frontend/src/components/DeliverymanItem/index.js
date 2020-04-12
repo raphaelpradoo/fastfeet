@@ -11,21 +11,21 @@ import { colors } from '~/styles/colors';
 
 import { Container, ActionsContainer } from './styles';
 
-export default function DeliverymanItem({ data }) {
+export default function DeliverymanItem({ data, loadDeliverymen }) {
   async function handleDelete() {
-    const confirm = window.confirm('Você tem certeza ... ?');
+    const confirm = window.confirm('Deseja realmente excluir o entregador ?');
 
     if (!confirm) {
-      toast.error('... não apagada!');
+      toast.info('Cancelada a exclusão do entregador !');
       return;
     }
 
     try {
-      await api.delete(`/deliveries/${data.id}`);
-      // updateDeliveryman();
-      toast.success('... apagada com sucesso!');
+      await api.delete(`/deliverymen/${data.id}`);
+      loadDeliverymen();
+      toast.success('Entregador excluído com sucesso !');
     } catch (err) {
-      toast.error('... não pode ser deletada!');
+      toast.error('Entregador não pode ser excluído !');
     }
   }
 
@@ -64,7 +64,7 @@ export default function DeliverymanItem({ data }) {
 }
 
 DeliverymanItem.propTypes = {
-  // updateDeliveryman: PropTypes.func.isRequired,
+  loadDeliverymen: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,

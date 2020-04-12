@@ -70,7 +70,7 @@ export default function Deliveryman() {
           </section>
           {deliverymen.map((deliveryman) => (
             <DeliverymanItem
-              updateDeliverymen={loadDeliverymen}
+              loadDeliverymen={loadDeliverymen}
               key={deliveryman.id}
               data={deliveryman}
             />
