@@ -39,7 +39,7 @@ export default function DeliveryProblem() {
           </section>
           {deliveryProblems.map((problem) => (
             <DeliveryProblemItem
-              updateDeliveryProblem={loadDeliveryProblems}
+              loadDeliveryProblem={loadDeliveryProblems}
               key={problem.id}
               data={problem}
             />

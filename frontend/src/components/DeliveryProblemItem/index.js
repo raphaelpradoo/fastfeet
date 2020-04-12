@@ -10,21 +10,21 @@ import { colors } from '~/styles/colors';
 
 import { Container, ActionsContainer } from './styles';
 
-export default function DeliveryProblemItem({ data }) {
+export default function DeliveryProblemItem({ data, loadDeliveryProblem }) {
   async function handleDelete() {
-    const confirm = window.confirm('Você tem certeza ... ?');
+    const confirm = window.confirm('Deseja realmente cancelar a encomenda ?');
 
     if (!confirm) {
-      toast.error('... não apagada!');
+      toast.info('Cancelado o cancelamento da encomenda !');
       return;
     }
 
     try {
-      await api.delete(`/deliveries/${data.id}`);
-      // updateDeliveryProblem();
-      toast.success('... apagada com sucesso!');
+      await api.delete(`problem/${data.delivery.id}/cancel-delivery`);
+      loadDeliveryProblem();
+      toast.success('Encomenda cancelada com sucesso !');
     } catch (err) {
-      toast.error('... não pode ser deletada!');
+      toast.error('Encomenda não pode ser cancelada !');
     }
   }
 
@@ -51,7 +51,7 @@ export default function DeliveryProblemItem({ data }) {
 }
 
 DeliveryProblemItem.propTypes = {
-  // updateDeliveryProblem: PropTypes.func.isRequired,
+  loadDeliveryProblem: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     description: PropTypes.string,
