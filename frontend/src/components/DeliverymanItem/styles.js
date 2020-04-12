@@ -60,7 +60,7 @@ export const ActionsContainer = styled.div`
       color: #999;
     }
 
-    :nth-last-child(-n + 2) {
+    :nth-last-child(-n + 1) {
       padding-top: 6px;
       border-top: 1px solid #eee;
     }
