@@ -70,7 +70,7 @@ export default function Recipient() {
           </section>
           {recipients.map((recipient) => (
             <RecipientItem
-              updateRecipients={loadRecipients}
+              loadRecipients={loadRecipients}
               key={recipient.id}
               data={recipient}
             />

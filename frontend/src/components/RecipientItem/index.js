@@ -11,21 +11,21 @@ import { colors } from '~/styles/colors';
 
 import { Container, ActionsContainer } from './styles';
 
-export default function RecipientItem({ data }) {
+export default function RecipientItem({ data, loadRecipients }) {
   async function handleDelete() {
     const confirm = window.confirm('Deseja realmente excluir o Destinatário ?');
 
     if (!confirm) {
-      toast.error('Destinatário não apagado !');
+      toast.info('Cancelada a exclusão do destinatário !');
       return;
     }
 
     try {
-      await api.delete(`/deliveries/${data.id}`);
-      // updateRecipient();
-      toast.success('... apagada com sucesso!');
+      await api.delete(`/recipients/${data.id}`);
+      loadRecipients();
+      toast.success('Destinatário excluído com sucesso!');
     } catch (err) {
-      toast.error('... não pode ser deletada!');
+      toast.error('Destinatário não pode ser excluído!');
     }
   }
 
@@ -72,7 +72,7 @@ export default function RecipientItem({ data }) {
 }
 
 RecipientItem.propTypes = {
-  // updateRecipient: PropTypes.func.isRequired,
+  loadRecipients: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
