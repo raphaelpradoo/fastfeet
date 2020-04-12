@@ -9,9 +9,11 @@ class RecipientController {
     // Recebendo os Query Parameters
     const { page = 1, name } = req.query;
 
-    // Filtra os Destinatarios
+    // Filtra os Destinatarios que:
+    // - Não foram excluidos (deleted_at = null)
     const recipients = await Recipient.findAll({
       where: {
+        deleted_at: null,
         name: {
           [Op.iLike]: name ? `%${name}%` : '%%',
         },
@@ -127,6 +129,29 @@ class RecipientController {
       state,
       cep,
     });
+  }
+
+  // Delete - Método para DELETAR
+  async delete(req, res) {
+    const recipient = await Recipient.findByPk(req.params.id);
+
+    // Erro. Destinatário não foi encontrado.
+    if (!recipient) {
+      return res.status(404).json({ error: 'Recipient not found.' });
+    }
+
+    // Erro. Destinatário já foi excluido.
+    if (recipient.deleted_at) {
+      return res.status(400).json({ error: 'Recipient already deleted.' });
+    }
+
+    // Tudo certo para DELETAR o Destinatário
+    // Marcar a coluna "deleted_at" com a data da exclusão
+    recipient.deleted_at = new Date();
+
+    await recipient.save();
+
+    return res.json({ recipient });
   }
 }
 
