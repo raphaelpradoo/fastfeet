@@ -23,9 +23,9 @@ export default function RecipientItem({ data, loadRecipients }) {
     try {
       await api.delete(`/recipients/${data.id}`);
       loadRecipients();
-      toast.success('Destinatário excluído com sucesso!');
+      toast.success('Destinatário excluído com sucesso !');
     } catch (err) {
-      toast.error('Destinatário não pode ser excluído!');
+      toast.error('Destinatário não pode ser excluído !');
     }
   }
 
