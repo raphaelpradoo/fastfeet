@@ -72,7 +72,7 @@ export default function Delivery() {
           <AddButton
             Icon={MdAdd}
             title="CADASTRAR"
-            action={() => history.push('')}
+            action={() => history.push('/delivery/form')}
             type="button"
           />
         </PageTitle>
@@ -89,7 +89,7 @@ export default function Delivery() {
           </section>
           {deliveries.map((delivery) => (
             <DeliveryItem
-              updateDeliveries={loadDeliveries}
+              loadDelivery={loadDeliveries}
               key={delivery.id}
               data={delivery}
             />

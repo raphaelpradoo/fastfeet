@@ -13,7 +13,7 @@ import DeliveryInformation from '~/components/DeliveryInformation';
 import Status from '~/components/DeliveryStatus';
 import { Container, ActionsContainer } from './styles';
 
-export default function DeliveryItem({ data }) {
+export default function DeliveryItem({ data, loadDelivery }) {
   function checkStatus(deliveryItem) {
     if (deliveryItem.canceled_at !== null) {
       return 'CANCELADA';
@@ -31,19 +31,20 @@ export default function DeliveryItem({ data }) {
   }
 
   async function handleDelete() {
-    const confirm = window.confirm('Você tem certeza que ... ?');
+    const confirm = window.confirm('Deseja realmente excluir o encomenda ?');
 
     if (!confirm) {
-      toast.error('Encomenda não apagada!');
+      toast.info('Cancelada a exclusão da encomenda !');
       return;
     }
 
     try {
       await api.delete(`/deliveries/${data.id}`);
-      // updateDelivery();
-      toast.success('Encomenda apagada com sucesso!');
+      loadDelivery();
+      toast.success('Encomenda excluída com sucesso !');
     } catch (err) {
-      toast.error('Essa encomenda não pode ser deletada!');
+      console.tron.log('err', err);
+      toast.error('Encomenda não pode ser excluída !');
     }
   }
 
@@ -69,7 +70,7 @@ export default function DeliveryItem({ data }) {
           </div>
           <div>
             <button
-              onClick={() => history.push(`/deliveries/form/${data.id}`)}
+              onClick={() => history.push(`/delivery/form/${data.id}`)}
               type="button"
             >
               <MdEdit color={colors.info} size={15} />
@@ -89,7 +90,7 @@ export default function DeliveryItem({ data }) {
 }
 
 DeliveryItem.propTypes = {
-  // updateDelivery: PropTypes.func.isRequired,
+  loadDelivery: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     product: PropTypes.string,

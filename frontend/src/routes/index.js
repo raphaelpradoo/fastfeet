@@ -8,6 +8,7 @@ import Deliveryman from '~/pages/Deliveryman';
 import Recipient from '~/pages/Recipient';
 import DeliveryProblem from '~/pages/DeliveryProblem';
 
+import DeliveryForm from '~/pages/Delivery/Form';
 import RecipientForm from '~/pages/Recipient/Form';
 import DeliverymanForm from '~/pages/Deliveryman/Form';
 
@@ -15,7 +16,9 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/delivery" component={Delivery} isPrivate />
+
+      <Route path="/delivery" exact component={Delivery} isPrivate />
+      <Route path="/delivery/form" exact component={DeliveryForm} isPrivate />
 
       <Route path="/deliveryman" exact component={Deliveryman} isPrivate />
       <Route
