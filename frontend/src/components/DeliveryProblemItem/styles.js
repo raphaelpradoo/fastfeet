@@ -19,7 +19,10 @@ export const Container = styled.div`
     font-size: 16px;
     color: #666;
     text-align: left;
-
+    max-width: 100ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     margin: auto 0;
   }
 
