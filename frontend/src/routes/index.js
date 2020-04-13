@@ -19,6 +19,12 @@ export default function Routes() {
 
       <Route path="/delivery" exact component={Delivery} isPrivate />
       <Route path="/delivery/form" exact component={DeliveryForm} isPrivate />
+      <Route
+        path="/delivery/form/:id"
+        exact
+        component={DeliveryForm}
+        isPrivate
+      />
 
       <Route path="/deliveryman" exact component={Deliveryman} isPrivate />
       <Route
@@ -43,7 +49,12 @@ export default function Routes() {
         isPrivate
       />
 
-      <Route path="/deliveryProblem" component={DeliveryProblem} isPrivate />
+      <Route
+        path="/deliveryProblem"
+        exact
+        component={DeliveryProblem}
+        isPrivate
+      />
     </Switch>
   );
 }

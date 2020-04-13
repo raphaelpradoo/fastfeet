@@ -66,6 +66,30 @@ class DeliveryController {
     return res.json(deliveries);
   }
 
+  // GetById - Método para trazer uma Entrega por ID
+  async getById(req, res) {
+    const delivery = await Delivery.findAll({
+      where: {
+        id: req.params.id,
+      },
+      attributes: ['id', 'recipient_id', 'deliveryman_id', 'product'],
+      include: [
+        {
+          model: Recipient,
+          as: 'recipient',
+          attributes: ['id', 'name'],
+        },
+        {
+          model: Deliveryman,
+          as: 'deliveryman',
+          attributes: ['id', 'name'],
+        },
+      ],
+    });
+
+    return res.json(delivery);
+  }
+
   // Store - Método para CRIAR uma Encomenda
   async store(req, res) {
     const schema = Yup.object().shape({

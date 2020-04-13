@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
@@ -16,28 +16,29 @@ import { Container, Content, UnForm } from './styles';
 
 export default function DeliveryForm({ match }) {
   const { id } = match.params;
-  const formRef = useRef(null);
+  const formRef = useRef();
 
   useEffect(() => {
-    async function loadInitialData(deliveryId) {
+    async function loadInitialData() {
       if (id) {
-        const response = await api.get(`/deliveries/${deliveryId}`);
+        const response = await api.get(`/deliveries/${id}`);
+        console.tron.log('response', response);
 
-        formRef.current.setData(response.data);
+        formRef.current.setData(response.data[0]);
         formRef.current.setFieldValue('recipient_id', {
-          value: response.data.recipient.id,
-          label: response.data.recipient.name,
+          value: response.data[0].recipient.id,
+          label: response.data[0].recipient.name,
         });
         formRef.current.setFieldValue('deliveryman_id', {
-          value: response.data.deliveryman.id,
-          label: response.data.deliveryman.name,
+          value: response.data[0].deliveryman.id,
+          label: response.data[0].deliveryman.name,
         });
       }
     }
-    loadInitialData(id);
+    loadInitialData();
   }, [id]);
 
-  const customStylesSelectInput = {
+  const customStyleCombobox = {
     control: (provided) => ({
       ...provided,
       height: 45,
@@ -86,7 +87,9 @@ export default function DeliveryForm({ match }) {
   return (
     <Container>
       <Content>
-        <HeaderForm title="Cadastro de encomendas">
+        <HeaderForm
+          title={id ? 'Edição de encomendas' : 'Cadastro de encomendas'}
+        >
           <BackButton />
           <SaveButton action={() => formRef.current.submitForm()} />
         </HeaderForm>
@@ -111,7 +114,7 @@ export default function DeliveryForm({ match }) {
 
                 return data;
               }}
-              styles={customStylesSelectInput}
+              styles={customStyleCombobox}
             />
 
             <ComboboxInput
@@ -132,7 +135,7 @@ export default function DeliveryForm({ match }) {
 
                 return data;
               }}
-              styles={customStylesSelectInput}
+              styles={customStyleCombobox}
             />
           </section>
           <SimpleInput

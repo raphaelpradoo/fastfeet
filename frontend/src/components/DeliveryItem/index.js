@@ -13,7 +13,7 @@ import DeliveryInformation from '~/components/DeliveryInformation';
 import Status from '~/components/DeliveryStatus';
 import { Container, ActionsContainer } from './styles';
 
-export default function DeliveryItem({ data, loadDelivery }) {
+export default function DeliveryItem({ data, loadDeliveries }) {
   function checkStatus(deliveryItem) {
     if (deliveryItem.canceled_at !== null) {
       return 'CANCELADA';
@@ -40,10 +40,9 @@ export default function DeliveryItem({ data, loadDelivery }) {
 
     try {
       await api.delete(`/deliveries/${data.id}`);
-      loadDelivery();
+      loadDeliveries();
       toast.success('Encomenda excluída com sucesso !');
     } catch (err) {
-      console.tron.log('err', err);
       toast.error('Encomenda não pode ser excluída !');
     }
   }
@@ -90,7 +89,7 @@ export default function DeliveryItem({ data, loadDelivery }) {
 }
 
 DeliveryItem.propTypes = {
-  loadDelivery: PropTypes.func.isRequired,
+  loadDeliveries: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.number,
     product: PropTypes.string,
