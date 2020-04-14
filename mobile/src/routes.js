@@ -15,20 +15,6 @@ Icon.loadFont();
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 
-function NewStack() {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTransparent: true,
-        headerTintColor: '#FFF',
-        headerLeftContainerStyle: {
-          marginLeft: 20,
-        },
-      }}
-    />
-  );
-}
-
 export default function createRouter(isSigned = false) {
   return !isSigned ? (
     <Stack.Navigator headerMode="none">
