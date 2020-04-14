@@ -25,7 +25,7 @@ routes.post('/users', UserController.store);
 routes.put('/users', UserController.update);
 
 // Tarefa dos Entregadores
-// routes.get('/deliverymen/:id', DeliverymanFeaturesController.index);
+routes.post('/deliverymen/login', DeliverymanFeaturesController.login);
 routes.get(
   '/deliverymen/:id/deliveries',
   DeliverymanFeaturesController.deliveries
