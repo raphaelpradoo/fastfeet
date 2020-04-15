@@ -7,19 +7,8 @@ import Delivery from '../models/Delivery';
 
 class DeliverymanFeaturesController {
   async login(req, res) {
-    const schema = Yup.object().shape({
-      email: Yup.string().email().required(),
-    });
-
-    // Erro de validação. Alguns dos campos não estão no padrão
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails.' });
-    }
-
-    const { email } = req.body;
-
     const deliveryman = await Deliveryman.findOne({
-      where: { email },
+      where: { id: req.params.id },
       include: [
         {
           model: File,
@@ -31,7 +20,7 @@ class DeliverymanFeaturesController {
 
     // Erro. Entregador não foi encontrado.
     if (!deliveryman) {
-      return res.status(401).json({ error: 'Deliveryman not found.' });
+      return res.status(404).json({ error: 'Deliveryman not found.' });
     }
 
     return res.json(deliveryman);
