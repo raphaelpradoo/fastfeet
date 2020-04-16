@@ -8,19 +8,17 @@ import { signInSuccess, signFailure } from './actions';
 export function* singIn({ payload }) {
   try {
     const { id } = payload;
-
     const response = yield call(api.get, `deliveryman/${id}/login`);
-
     yield put(
-      signInSuccess(response.data.id, {
+      signInSuccess(id, {
         name: response.data.name,
         email: response.data.email,
-        created_at: format(parseISO(response.data.created_at), 'dd/MM/yyyy'),
+        created_at: format(parseISO(response.data.createdAt), 'dd/MM/yyyy'),
         avatar: response.data.avatar,
       })
     );
   } catch (err) {
-    Alert.alert('Falha na autenticação.', 'Entregador não cadastrado.');
+    Alert.alert('Falha na autenticação', 'Entregador não cadastrado');
     yield put(signFailure());
   }
 }
