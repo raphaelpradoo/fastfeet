@@ -72,7 +72,7 @@ class DeliverymanFeaturesController {
         deliveryman_id: req.params.id,
       },
       order: ['id'],
-      attributes: ['id', 'product', 'end_date'],
+      attributes: ['id', 'product', 'canceled_at', 'start_date', 'end_date'],
       include: [
         {
           model: Recipient,
@@ -116,7 +116,7 @@ class DeliverymanFeaturesController {
         deliveryman_id: req.params.id,
       },
       order: ['id'],
-      attributes: ['id', 'product', 'end_date'],
+      attributes: ['id', 'product', 'canceled_at', 'start_date', 'end_date'],
       include: [
         {
           model: Recipient,
