@@ -124,14 +124,3 @@ export default function Deliveries() {
     </Container>
   );
 }
-
-Deliveries.navigationOptions = {
-  tabBarLabel: 'Entregas',
-  tabBarOptions: {
-    activeTintColor: '#7159c1',
-    inactiveTintColor: '#808080',
-  },
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="reorder" size={30} color={tintColor} />
-  ),
-};
