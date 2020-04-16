@@ -1,12 +1,21 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { Text } from 'react-native';
 
-// import { Container } from './styles';
+import { signOut } from '~/store/modules/auth/actions';
+
+import { Container, LogoutButton } from './styles';
 
 export default function Profile() {
+  const dispatch = useDispatch();
+
+  function handleLogout() {
+    dispatch(signOut());
+  }
   return (
-    <View>
+    <Container>
       <Text>Perfil</Text>
-    </View>
+      <LogoutButton onPress={handleLogout}>Logout</LogoutButton>
+    </Container>
   );
 }
