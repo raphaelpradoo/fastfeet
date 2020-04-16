@@ -13,8 +13,8 @@ export default (signedIn = false) =>
           SignIn,
         }),
         App: createBottomTabNavigator({
-          Profile,
           Deliveries,
+          Profile,
         }),
       },
       {
