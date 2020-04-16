@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import { isBefore, isAfter } from 'date-fns';
 
 import File from '../models/File';
+import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
 import Delivery from '../models/Delivery';
 
@@ -66,16 +67,27 @@ class DeliverymanFeaturesController {
       return res.status(404).json({ error: 'Deliveryman not found.' });
     }
 
-    // Filtra todas as Entregas do Entregador que:
-    // - Já foram entregues (end_date != null)
     const response = await Delivery.findAll({
       where: {
         deliveryman_id: req.params.id,
       },
       order: ['id'],
-      // limit: 20,
       attributes: ['id', 'product', 'end_date'],
       include: [
+        {
+          model: Recipient,
+          as: 'recipient',
+          attributes: [
+            'id',
+            'name',
+            'address',
+            'number',
+            'complement',
+            'city',
+            'state',
+            'cep',
+          ],
+        },
         {
           model: File,
           as: 'signature',
@@ -84,7 +96,57 @@ class DeliverymanFeaturesController {
       ],
     });
 
+    // Filtra todas as Entregas do Entregador que:
+    // - Já foram entregues (end_date != null)
     const deliveries = response.filter((d) => d.end_date !== null);
+
+    return res.json(deliveries);
+  }
+
+  async pending(req, res) {
+    const deliveryman = await Deliveryman.findByPk(req.params.id);
+
+    // Erro. Entregador não foi encontrado.
+    if (!deliveryman) {
+      return res.status(404).json({ error: 'Deliveryman not found.' });
+    }
+
+    const response = await Delivery.findAll({
+      where: {
+        deliveryman_id: req.params.id,
+      },
+      order: ['id'],
+      attributes: ['id', 'product', 'end_date'],
+      include: [
+        {
+          model: Recipient,
+          as: 'recipient',
+          attributes: [
+            'id',
+            'name',
+            'address',
+            'number',
+            'complement',
+            'city',
+            'state',
+            'cep',
+          ],
+        },
+        {
+          model: File,
+          as: 'signature',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+
+    // Filtra todas as Entregas do Entregador que:
+    // - Estão pendentes (start_date = null)
+    // - Foram retiradas e não entregues (start_date != null && end_data = null)
+    const deliveries = response.filter(
+      (d) =>
+        d.start_date === null || (d.start_date !== null && d.end_date === null)
+    );
 
     return res.json(deliveries);
   }

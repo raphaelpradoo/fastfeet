@@ -27,9 +27,10 @@ routes.put('/users', UserController.update);
 // Tarefa dos Entregadores
 routes.get('/deliveryman/:id/login', DeliverymanFeaturesController.login);
 routes.get(
-  '/deliverymen/:id/deliveries',
+  '/deliveryman/:id/deliveries',
   DeliverymanFeaturesController.deliveries
 );
+routes.get('/deliveryman/:id/pending', DeliverymanFeaturesController.pending);
 routes.put(
   '/deliverymen/:id_deliveryman/receive/:id_delivery',
   DeliverymanFeaturesController.receive
