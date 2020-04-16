@@ -53,7 +53,9 @@ Profile.navigationOptions = {
   tabBarLabel: 'Meu perfil',
   tabBarOptions: {
     activeTintColor: '#7159c1',
-    inactiveTintColor: '#fff',
+    inactiveTintColor: '#808080',
   },
-  tabBarIcon: () => <Icon name="account-circle" size={30} color="#7159c1" />,
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="account-circle" size={30} color={tintColor} />
+  ),
 };
