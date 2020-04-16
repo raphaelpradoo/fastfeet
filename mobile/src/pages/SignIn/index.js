@@ -1,5 +1,10 @@
 import React, { useRef } from 'react';
-import { Image, StatusBar } from 'react-native';
+import {
+  Image,
+  StatusBar,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form } from '@unform/mobile';
 
@@ -18,26 +23,34 @@ export default function SignIn() {
     reset();
   }
 
+  const DismissKeyboard = ({ children }) => (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      {children}
+    </TouchableWithoutFeedback>
+  );
+
   return (
-    <Container>
-      <StatusBar backgroundColor={colors.primary} />
-      <Image source={logo} />
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input
-          name="id"
-          keyboardType="default"
-          placeholder="Informe seu ID de cadastro"
-          autoCorrect={false}
-          returnKeyType="send"
-          autoCapitalize="none"
-        />
-        <SubmitButton
-          loading={loading}
-          onPress={() => formRef.current.submitForm()}
-        >
-          Entrar no sistema
-        </SubmitButton>
-      </Form>
-    </Container>
+    <DismissKeyboard>
+      <Container>
+        <StatusBar backgroundColor={colors.primary} />
+        <Image source={logo} />
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input
+            name="id"
+            keyboardType="number-pad"
+            placeholder="Informe seu ID de cadastro"
+            autoCorrect={false}
+            returnKeyType="send"
+            autoCapitalize="none"
+          />
+          <SubmitButton
+            loading={loading}
+            onPress={() => formRef.current.submitForm()}
+          >
+            Entrar no sistema
+          </SubmitButton>
+        </Form>
+      </Container>
+    </DismissKeyboard>
   );
 }
