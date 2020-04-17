@@ -133,9 +133,15 @@ export default function DeliveryDetails() {
             <OptionTitle>Informar{`\n`}Problema</OptionTitle>
           </Option>
 
-          <Option>
+          <Option
+            onPress={() =>
+              navigation.navigate('VisualizarProblema', {
+                delivery_id: delivery.id,
+              })
+            }
+          >
             <Icon name="info-outline" color="#E7BA40" size={20} />
-            <OptionTitle>Visualizar{`\n`}Problemas</OptionTitle>
+            <OptionTitle>Visualizar{`\n`}Problema</OptionTitle>
           </Option>
 
           {status === 'PENDENTE' ? (
@@ -146,7 +152,7 @@ export default function DeliveryDetails() {
           ) : (
             <Option
               onPress={() =>
-                navigation.navigate('ConfirmPhoto', {
+                navigation.navigate('ConfirmarEntrega', {
                   delivery_id: delivery.id,
                 })
               }

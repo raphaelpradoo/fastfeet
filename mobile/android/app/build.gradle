@@ -195,6 +195,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
     implementation 'adnroidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
 
+    implementation (project(':react-native-camera')) {
+      exclude group: "com.google.android.gms"
+      implementation 'com.android.support:exifinterface:27.+'
+      implementation ('com.google.android.gms:play-services-vision:17.0.2') {
+        force = true
+      }
+    }
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }
