@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 export default function Dashboard() {
   return (
     <>
-      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+      <StatusBar backgroundColor="#fff" barStyle="default" />
       <Tab.Navigator
         tabBarOptions={{
           activeTintColor: colors.primary,
