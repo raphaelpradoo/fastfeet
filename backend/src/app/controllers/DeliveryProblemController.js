@@ -41,6 +41,23 @@ class DeliveryProblemController {
     return res.json(problems);
   }
 
+  async problem(req, res) {
+    // Erro. Entrega não encontrada.
+    const delivery = await Delivery.findByPk(req.params.id);
+
+    if (!delivery) {
+      return res.status(404).json({ error: 'Delivery not found.' });
+    }
+
+    const problem = await DeliveryProblem.findOne({
+      where: { delivery_id: req.params.id },
+      order: ['id'],
+      attributes: ['id', 'delivery_id', 'description', 'created_at'],
+    });
+
+    return res.json(problem);
+  }
+
   // Store - Método para CRIAR um Problema de Encomenda
   async store(req, res) {
     const schema = Yup.object().shape({

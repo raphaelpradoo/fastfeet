@@ -42,6 +42,7 @@ routes.put(
 
 // Problemas na Entrega
 routes.get('/deliveries/problems', DeliveryProblemController.index);
+routes.get('/problem/delivery/:id', DeliveryProblemController.problem);
 routes.post('/delivery/:id/problem', DeliveryProblemController.store);
 
 // Middleware de Autenticação via Token JWT
