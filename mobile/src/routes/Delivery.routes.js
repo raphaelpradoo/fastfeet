@@ -2,10 +2,9 @@ import React from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-// import CreateProblem from '~/pages/CreateProblem';
 import Deliveries from '~/pages/Deliveries';
-// import DeliveryConfirmPhoto from '~/pages/DeliveryConfirmPhoto';
 import DeliveryDetails from '~/pages/DeliveryDetails';
+import ReportProblem from '~/pages/DeliveryActions/ReportProblem';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +33,13 @@ export default function DeliveryRoutes() {
           title: 'Detalhes da encomenda',
         }}
         component={DeliveryDetails}
+      />
+      <Stack.Screen
+        name="InformarProblema"
+        options={{
+          title: 'Informar problema',
+        }}
+        component={ReportProblem}
       />
     </Stack.Navigator>
   );

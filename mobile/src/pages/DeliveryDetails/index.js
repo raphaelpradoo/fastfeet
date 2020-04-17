@@ -124,7 +124,9 @@ export default function DeliveryDetails() {
         <Menu>
           <Option
             onPress={() =>
-              navigation.navigate('CraeteProblem', { delivery_id: delivery.id })
+              navigation.navigate('InformarProblema', {
+                delivery_id: delivery.id,
+              })
             }
           >
             <Icon name="highlight-off" color={colors.danger} size={20} />
