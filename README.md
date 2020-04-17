@@ -1,12 +1,12 @@
 <h1 align="center">
-  <img alt="FastFeet" height="215" title="FastFeet" src=".github/logo.svg" />
+  <img alt="FastFeet" height="215" title="FastFeet" src="logo.svg" />
 </h1>
 
-<p align="center">Este código representa a minha solução do desafio final FastFeet da Rocketseat./</p>
+<p align="center">Este código representa a minha solução do desafio final FastFeet da Rocketseat.</p>
 
 <p align="center">
  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
- <a href="#computer-instalação-execução-e-desenvolvimento">Instalação, execução e desenvolvimento</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ <a href="#computer-instalação-execução-e-desenvolvimento">Instalação, execução e desenvolvimento</a>
 </p>
 
 <strong>Links dos desafios:</strong>
