@@ -22,7 +22,6 @@ export default function DeliveryForm({ match }) {
     async function loadInitialData() {
       if (id) {
         const response = await api.get(`/deliveries/${id}`);
-        console.tron.log('response', response);
 
         formRef.current.setData(response.data[0]);
         formRef.current.setFieldValue('recipient_id', {
