@@ -25,7 +25,7 @@ class User extends Model {
     return this;
   }
 
-  // Metodo que compara se a senha digitada eh igual a senha salva
+  // Metodo que compara se a senha digitada é igual a senha salva
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);
   }
